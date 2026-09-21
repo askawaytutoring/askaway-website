@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASKaway Tutoring — Affordable Math Tutoring for K–8, Online &amp; In Person</title>
+<meta name="description" content="ASKaway Tutoring provides affordable one-on-one math instruction for elementary and middle school students, online or in person — with proceeds supporting UNICEF's work for children worldwide.">
+<meta name="theme-color" content="#060A0F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='10,40 46,48 46,84 10,76' fill='%231165C3'/%3E%3Cpolygon points='90,40 54,48 54,84 90,76' fill='%232F86E8'/%3E%3Cpolygon points='34,25 34,35 50,43 66,35 66,25 50,32' fill='%232D3541'/%3E%3Cpolygon points='50,8 92,27 50,46 8,27' fill='%232D3541'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ============================= */
+/* Base & Design Tokens          */
+/* ============================= */
+:root{
+  --void: #060A0F;
+  --deep: #0B111A;
+  --surface: #121A24;
+  --surface-2: #1A2430;
+  --line: rgba(244,247,251,0.09);
+  --line-strong: rgba(244,247,251,0.16);
+  --navy: #2D3541;
+  --blue: #1165C3;
+  --blue-bright: #2F86E8;
+  --blue-soft: rgba(47,134,232,0.14);
+  --ink: #F4F7FB;
+  --ink-soft: #B9C4D1;
+  --ink-muted: #7C8896;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+  --container: 1160px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--ink-soft);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+h1,h2,h3,h4{ margin:0; color:var(--ink); font-weight:500; }
+p{ margin:0; }
+button{ font-family:inherit; }
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 2rem;
+}
+
+:focus-visible{
+  outline:2px solid var(--blue-bright);
+  outline-offset:3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
+
+/* ============================= */
+/* Typography                    */
+/* ============================= */
+h2.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(2rem, 1.4rem + 2.4vw, 2.9rem);
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+}
+
+.section-lede{
+  font-size:1.05rem;
+  color:var(--ink-soft);
+  max-width:58ch;
+  line-height:1.7;
+}
+
+/* ============================= */
+/* Buttons                       */
+/* ============================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  padding:0.95rem 1.9rem;
+  border-radius:10px;
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:0.98rem;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--blue-bright), var(--blue) 75%);
+  color:#F8FBFF;
+  box-shadow:0 1px 0 rgba(255,255,255,0.12) inset, 0 8px 24px -8px rgba(17,101,195,0.65);
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 1px 0 rgba(255,255,255,0.14) inset, 0 14px 30px -8px rgba(47,134,232,0.75);
+}
+.btn-ghost{
+  background:transparent;
+  color:var(--ink);
+  border-color:var(--line-strong);
+}
+.btn-ghost:hover{
+  border-color:var(--blue-bright);
+  color:var(--ink);
+}
+.btn-sm{ padding:0.65rem 1.3rem; font-size:0.9rem; }
+.btn-block{ width:100%; }
+
+.text-link{
+  display:inline-flex;
+  align-items:center;
+  color:var(--ink-soft);
+  font-weight:600;
+  font-size:0.98rem;
+  border-bottom:1px solid var(--line-strong);
+  padding-bottom:2px;
+  transition:color 0.18s ease, border-color 0.18s ease;
+}
+.text-link:hover{ color:var(--ink); border-color:var(--blue-bright); }
+
+/* ============================= */
+/* Logo (shared)                 */
+/* ============================= */
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:0.65rem;
+}
+.logo-mark{ width:34px; height:34px; flex-shrink:0; }
+.logo-word{
+  font-family:var(--font-body);
+  font-weight:800;
+  font-size:1.28rem;
+  letter-spacing:0.01em;
+  color:var(--blue-bright);
+  display:inline-flex;
+  align-items:baseline;
+  gap:0.12em;
+}
+.logo-word em{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:0;
+}
+
+/* ============================= */
+/* Navigation                    */
+/* ============================= */
+.site-header{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  padding:1.35rem 0;
+  transition:background 0.3s ease, border-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom:1px solid transparent;
+}
+.site-header.is-scrolled{
+  background:rgba(6,10,15,0.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:1rem 0;
+}
+.nav-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:2.1rem;
+}
+.nav-links a:not(.btn){
+  font-size:0.96rem;
+  font-weight:600;
+  color:var(--ink-soft);
+  transition:color 0.18s ease;
+}
+.nav-links a:not(.btn):hover{ color:var(--ink); }
+.nav-cta{ display:flex; align-items:center; gap:1.6rem; }
+
+.nav-toggle{
+  display:none;
+  width:40px; height:40px;
+  border-radius:8px;
+  border:1px solid var(--line-strong);
+  background:transparent;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.nav-toggle span, .nav-toggle::before, .nav-toggle::after{
+  content:'';
+  display:block;
+  width:18px; height:2px;
+  background:var(--ink);
+  position:relative;
+  transition:transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle::before{ transform:translateY(-6px); }
+.nav-toggle::after{ transform:translateY(4px); }
+.nav-toggle.is-open span{ opacity:0; }
+.nav-toggle.is-open::before{ transform:translateY(1px) rotate(45deg); }
+.nav-toggle.is-open::after{ transform:translateY(-1px) rotate(-45deg); }
+
+.mobile-panel{
+  display:none;
+  flex-direction:column;
+  gap:1.1rem;
+  padding:1.5rem 2rem 2rem;
+  background:rgba(6,10,15,0.97);
+  border-bottom:1px solid var(--line);
+}
+.mobile-panel.is-open{ display:flex; }
+.mobile-panel a:not(.btn){
+  font-size:1.05rem;
+  font-weight:600;
+  color:var(--ink-soft);
+}
+
+@media (max-width:860px){
+  .nav-links{ display:none; }
+  .nav-cta .btn{ display:none; }
+  .nav-toggle{ display:flex; }
+}
+
+/* ============================= */
+/* Hero                          */
+/* ============================= */
+.hero{
+  position:relative;
+  padding:11.5rem 0 8rem;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(17,101,195,0.24), transparent 60%),
+    var(--void);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:2rem;
+  align-items:center;
+  position:relative;
+  z-index:2;
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.6rem, 1.7rem + 3.6vw, 4.35rem);
+  line-height:1.06;
+  letter-spacing:-0.015em;
+  max-width:14ch;
+  opacity:0;
+  animation:rise 0.8s ease 0.05s forwards;
+}
+.hero-sub{
+  margin-top:1.7rem;
+  font-size:1.13rem;
+  line-height:1.7;
+  color:var(--ink-soft);
+  max-width:46ch;
+  opacity:0;
+  animation:rise 0.8s ease 0.22s forwards;
+}
+.hero-actions{
+  margin-top:2.5rem;
+  display:flex;
+  align-items:center;
+  gap:1.8rem;
+  flex-wrap:wrap;
+  opacity:0;
+  animation:rise 0.8s ease 0.38s forwards;
+}
+
+@keyframes rise{
+  from{ opacity:0; transform:translateY(16px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+.hero-figure{
+  position:relative;
+  height:420px;
+  opacity:0;
+  animation:rise 0.9s ease 0.3s forwards;
+}
+.ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid var(--line-strong);
+}
+.ring-1{ width:340px; height:340px; top:10px; right:20px; }
+.ring-2{ width:230px; height:230px; top:65px; right:75px; border-color:rgba(47,134,232,0.3); }
+.ring-3{ width:120px; height:120px; top:120px; right:130px; border-color:var(--line); }
+.glyph{
+  position:absolute;
+  font-family:var(--font-display);
+  font-style:italic;
+  color:var(--blue-bright);
+}
+.glyph-1{ top:34px; right:220px; font-size:2.6rem; opacity:0.55; }
+.glyph-2{ top:200px; right:5px; font-size:2rem; opacity:0.4; color:var(--ink); }
+.glyph-3{ top:290px; right:180px; font-size:3.1rem; opacity:0.35; }
+.glyph-4{ top:120px; right:290px; font-size:1.6rem; opacity:0.5; color:var(--ink); }
+
+@media (max-width:900px){
+  .hero{ padding:9rem 0 5rem; }
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-figure{ display:none; }
+  .hero h1{ max-width:100%; }
+}
+
+/* ============================= */
+/* About                         */
+/* ============================= */
+.about{
+  padding:8rem 0;
+  background:var(--deep);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.about-head{ margin-bottom:3.5rem; }
+.about-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:5rem;
+}
+.about-copy p{
+  font-size:1.05rem;
+  line-height:1.8;
+  color:var(--ink-soft);
+  max-width:62ch;
+}
+.about-copy p + p{ margin-top:1.4rem; }
+
+.fact-stack{
+  display:flex;
+  flex-direction:column;
+}
+.fact{
+  padding:1.7rem 0;
+  border-top:1px solid var(--line);
+}
+.fact:first-child{ padding-top:0; border-top:none; }
+.fact-num{
+  font-family:var(--font-display);
+  font-size:2.6rem;
+  color:var(--blue-bright);
+  line-height:1;
+}
+.fact-label{
+  margin-top:0.5rem;
+  font-size:0.95rem;
+  color:var(--ink-muted);
+  max-width:32ch;
+  line-height:1.5;
+}
+
+@media (max-width:900px){
+  .about{ padding:5rem 0; }
+  .about-grid{ grid-template-columns:1fr; gap:3rem; }
+}
+
+/* ============================= */
+/* Why ASKaway                   */
+/* ============================= */
+.why{ padding:8rem 0; background:var(--void); }
+.why-head{ margin-bottom:3.5rem; max-width:52ch; }
+.why-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.why-item{
+  padding:3rem;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.why-item h3{
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:1.2rem;
+  color:var(--ink);
+}
+.why-item p{
+  margin-top:0.85rem;
+  font-size:0.98rem;
+  line-height:1.7;
+  color:var(--ink-soft);
+  max-width:40ch;
+}
+
+@media (max-width:900px){
+  .why{ padding:5rem 0; }
+  .why-grid{ grid-template-columns:1fr; }
+  .why-item{ padding:2.2rem 0; border-right:none; }
+}
+
+/* ============================= */
+/* CTA Banner                    */
+/* ============================= */
+.cta-section{ padding:0 0 8rem; background:var(--void); }
+.cta-banner{
+  position:relative;
+  overflow:hidden;
+  border-radius:26px;
+  padding:5rem;
+  background:
+    radial-gradient(ellipse 70% 90% at 85% 30%, rgba(255,255,255,0.08), transparent 55%),
+    linear-gradient(120deg, var(--blue) 0%, #0C3D6E 55%, #081726 100%);
+}
+.cta-banner-inner{ position:relative; z-index:2; max-width:34rem; }
+.cta-banner h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem, 1.3rem + 2vw, 2.6rem);
+  color:#fff;
+  line-height:1.15;
+}
+.cta-banner p{
+  margin-top:1.1rem;
+  color:rgba(244,247,251,0.82);
+  font-size:1.05rem;
+  max-width:38ch;
+}
+.cta-banner .btn{ margin-top:2.1rem; }
+.cta-ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(244,247,251,0.18);
+}
+.cta-ring-1{ width:420px; height:420px; top:-160px; right:-120px; }
+.cta-ring-2{ width:260px; height:260px; bottom:-120px; right:60px; border-color:rgba(244,247,251,0.12); }
+
+@media (max-width:900px){
+  .cta-section{ padding:0 0 5rem; }
+  .cta-banner{ padding:3rem 2rem; border-radius:20px; }
+}
+
+/* ============================= */
+/* Footer                        */
+/* ============================= */
+.site-footer{ background:var(--deep); padding-top:5.5rem; }
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1.2fr;
+  gap:3rem;
+  padding-bottom:3.5rem;
+}
+.footer-brand p{
+  margin-top:1.1rem;
+  font-size:0.95rem;
+  color:var(--ink-muted);
+  max-width:30ch;
+  line-height:1.6;
+}
+.footer-col h4{
+  font-family:var(--font-body);
+  font-size:0.85rem;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:1.1rem;
+}
+.footer-col ul li{ margin-bottom:0.75rem; }
+.footer-col a{
+  font-size:0.94rem;
+  color:var(--ink-muted);
+  transition:color 0.18s ease;
+}
+.footer-col a:hover{ color:var(--ink-soft); }
+.footer-impact{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.65;
+  color:var(--ink-soft);
+  max-width:26ch;
+}
+.social-row{ display:flex; gap:0.75rem; margin-top:1.4rem; }
+.social-icon{
+  width:38px; height:38px;
+  border-radius:9px;
+  border:1px solid var(--line-strong);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink-muted);
+  transition:border-color 0.18s ease, color 0.18s ease;
+}
+.social-icon:hover{ border-color:var(--blue-bright); color:var(--ink); }
+.social-icon svg{ width:17px; height:17px; }
+
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding:1.6rem 0 2.2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  flex-wrap:wrap;
+  font-size:0.85rem;
+  color:var(--ink-muted);
+}
+
+@media (max-width:900px){
+  .site-footer{ padding-top:3.5rem; }
+  .footer-grid{ grid-template-columns:1fr 1fr; gap:2.5rem; padding-bottom:2.5rem; }
+}
+@media (max-width:560px){
+  .footer-grid{ grid-template-columns:1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container nav-row">
+    <a href="index.html" class="logo" aria-label="ASKaway Tutoring home">
+      <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="10,40 46,48 46,84 10,76" fill="#1165C3"/>
+        <polygon points="90,40 54,48 54,84 90,76" fill="#2F86E8"/>
+        <rect x="24" y="55" width="4" height="16" fill="#F4F7FB"/>
+        <rect x="18" y="61" width="16" height="4" fill="#F4F7FB"/>
+        <rect x="66" y="61" width="16" height="4" fill="#F4F7FB"/>
+        <circle cx="74" cy="55" r="2.6" fill="#F4F7FB"/>
+        <circle cx="74" cy="71" r="2.6" fill="#F4F7FB"/>
+        <polygon points="34,25 34,35 50,43 66,35 66,25 50,32" fill="#2D3541"/>
+        <polygon points="50,8 92,27 50,46 8,27" fill="#2D3541" stroke="#2F86E8" stroke-width="0.8"/>
+        <path d="M92,27 L94,50" stroke="#2F86E8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="94" cy="52" r="3.2" fill="#2F86E8"/>
+      </svg>
+      <span class="logo-word">ASK<em>away</em></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#why">Why ASKaway</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="book.html" class="btn btn-primary btn-sm">Book a Session</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="#about">About</a>
+    <a href="#why">Why ASKaway</a>
+    <a href="book.html" class="btn btn-primary btn-block">Book a Session</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>One-on-one math tutoring, priced for real families.</h1>
+        <p class="hero-sub">ASKaway pairs elementary and middle schoolers with dedicated one-on-one math instruction — for a fraction of the typical California tutoring rate. Most of what you pay funds UNICEF's work for children in over 190 countries.</p>
+        <div class="hero-actions">
+          <a href="book.html" class="btn btn-primary">Book a Session</a>
+          <a href="#why" class="text-link">See why families choose ASKaway</a>
+        </div>
+      </div>
+      <div class="hero-figure" aria-hidden="true">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="glyph glyph-1">+</div>
+        <div class="glyph glyph-2">=</div>
+        <div class="glyph glyph-3">÷</div>
+        <div class="glyph glyph-4">×</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-head">
+        <h2 class="section-title">About ASKaway</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p>ASKaway Tutoring is affordable mathematic tutoring and instruction for elementary and middle school students, built on a simple idea: quality learning shouldn't come with a luxury price tag. For a fraction of the average tutoring cost in California, students get one-on-one academic support and the experience of students at the highest levels.</p>
+          <p>A small portion of each session covers materials and program costs. The rest is donated directly to UNICEF, which works in over 190 countries to protect children's rights, health, and education worldwide. Every session held locally helps fund that same mission on a global scale.</p>
+          <p>ASKaway started in founder Abhinav Kodali's sixth grade, when a Rubik's Cube hobby turned into free lessons for five elementary schoolers. That group grew to over thirty, competed together at their first official competition, and eventually became the foundation for something bigger: a tutoring program built to make real academic help accessible to any family that needs it, not just those who can afford it.</p>
+          <p>Whether your student wants support with their math or hopes to prepare for their next level of material, every session supports two communities at once — yours, and one much farther away.</p>
+        </div>
+        <div class="fact-stack">
+          <div class="fact">
+            <div class="fact-num">6th grade</div>
+            <div class="fact-label">Where ASKaway began, as free Rubik's Cube lessons for five classmates</div>
+          </div>
+          <div class="fact">
+            <div class="fact-num">30+</div>
+            <div class="fact-label">Students in that original group by the time it competed together</div>
+          </div>
+          <div class="fact">
+            <div class="fact-num">190+</div>
+            <div class="fact-label">Countries reached through UNICEF's work, funded by every session</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ASKAWAY -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="why-head">
+        <h2 class="section-title">Why Families Choose ASKaway</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <h3>Real one-on-one attention</h3>
+          <p>Every session is just your student and their tutor: focused instruction for grades K through 8, not a group class.</p>
+        </div>
+        <div class="why-item">
+          <h3>Online or in person</h3>
+          <p>Sessions run wherever your family's schedule works best, with the same one-on-one quality either way.</p>
+        </div>
+        <div class="why-item">
+          <h3>Priced to stay accessible</h3>
+          <p>Rates sit well below typical California tutoring costs, and sibling sessions cost less per student.</p>
+        </div>
+        <div class="why-item">
+          <h3>Purpose beyond the lesson</h3>
+          <p>After covering materials and basic costs, the rest of every session fee goes directly to UNICEF.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-banner">
+        <div class="cta-ring cta-ring-1" aria-hidden="true"></div>
+        <div class="cta-ring cta-ring-2" aria-hidden="true"></div>
+        <div class="cta-banner-inner">
+          <h2>Your first session is one message away.</h2>
+          <p>Book a single session or lock in sibling pricing — online or in person, starting at $20.</p>
+          <a href="book.html" class="btn btn-primary">Book a Session</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="ASKaway Tutoring home">
+          <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="10,40 46,48 46,84 10,76" fill="#1165C3"/>
+            <polygon points="90,40 54,48 54,84 90,76" fill="#2F86E8"/>
+            <rect x="24" y="55" width="4" height="16" fill="#F4F7FB"/>
+            <rect x="18" y="61" width="16" height="4" fill="#F4F7FB"/>
+            <rect x="66" y="61" width="16" height="4" fill="#F4F7FB"/>
+            <circle cx="74" cy="55" r="2.6" fill="#F4F7FB"/>
+            <circle cx="74" cy="71" r="2.6" fill="#F4F7FB"/>
+            <polygon points="34,25 34,35 50,43 66,35 66,25 50,32" fill="#2D3541"/>
+            <polygon points="50,8 92,27 50,46 8,27" fill="#2D3541" stroke="#2F86E8" stroke-width="0.8"/>
+            <path d="M92,27 L94,50" stroke="#2F86E8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <circle cx="94" cy="52" r="3.2" fill="#2F86E8"/>
+          </svg>
+          <span class="logo-word">ASK<em>away</em></span>
+        </a>
+        <p>Affordable, one-on-one math tutoring for grades K–8 — online and in person.</p>
+        <div class="social-row">
+          <!-- Add your Instagram link here once your account is live: change href="#" to your profile URL -->
+          <a href="#" class="social-icon" aria-label="ASKaway on Instagram" title="Instagram — coming soon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#why">Why ASKaway</a></li>
+          <li><a href="book.html">Book a Session</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:askawayteaching@gmail.com">askawayteaching@gmail.com</a></li>
+          <li><a href="tel:+18057421583">(805) 742-1583</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Impact</h4>
+        <p class="footer-impact">Every session helps fund UNICEF's work for children in over 190 countries.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ASKaway Tutoring. All rights reserved.</span>
+      <span>Math support for grades K–8 · Online &amp; in-person sessions</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky header background on scroll
+  var header = document.getElementById('siteHeader');
+  function onScroll(){
+    if(window.scrollY > 12){ header.classList.add('is-scrolled'); }
+    else{ header.classList.remove('is-scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // Mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  var mobilePanel = document.getElementById('mobilePanel');
+  navToggle.addEventListener('click', function(){
+    var isOpen = mobilePanel.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobilePanel.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      mobilePanel.classList.remove('is-open');
+      navToggle.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>

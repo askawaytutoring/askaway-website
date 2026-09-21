@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Session — ASKaway Tutoring</title>
+<meta name="description" content="Book an online or in-person math tutoring session with ASKaway. 45-minute sessions from $20, with sibling pricing available.">
+<meta name="theme-color" content="#060A0F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='10,40 46,48 46,84 10,76' fill='%231165C3'/%3E%3Cpolygon points='90,40 54,48 54,84 90,76' fill='%232F86E8'/%3E%3Cpolygon points='34,25 34,35 50,43 66,35 66,25 50,32' fill='%232D3541'/%3E%3Cpolygon points='50,8 92,27 50,46 8,27' fill='%232D3541'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+/* ============================= */
+/* Base & Design Tokens          */
+/* ============================= */
+:root{
+  --void: #060A0F;
+  --deep: #0B111A;
+  --surface: #121A24;
+  --surface-2: #1A2430;
+  --line: rgba(244,247,251,0.09);
+  --line-strong: rgba(244,247,251,0.16);
+  --navy: #2D3541;
+  --blue: #1165C3;
+  --blue-bright: #2F86E8;
+  --blue-soft: rgba(47,134,232,0.14);
+  --ink: #F4F7FB;
+  --ink-soft: #B9C4D1;
+  --ink-muted: #7C8896;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Manrope', sans-serif;
+  --container: 1160px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--ink-soft);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+ul{ margin:0; padding:0; list-style:none; }
+h1,h2,h3,h4{ margin:0; color:var(--ink); font-weight:500; }
+p{ margin:0; }
+button{ font-family:inherit; }
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 2rem;
+}
+
+:focus-visible{
+  outline:2px solid var(--blue-bright);
+  outline-offset:3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
+
+h2.section-title{
+  font-family:var(--font-display);
+  font-size:clamp(2rem, 1.4rem + 2.4vw, 2.9rem);
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  color:var(--ink);
+}
+
+/* ============================= */
+/* Buttons                       */
+/* ============================= */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  padding:0.95rem 1.9rem;
+  border-radius:10px;
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:0.98rem;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(135deg, var(--blue-bright), var(--blue) 75%);
+  color:#F8FBFF;
+  box-shadow:0 1px 0 rgba(255,255,255,0.12) inset, 0 8px 24px -8px rgba(17,101,195,0.65);
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 1px 0 rgba(255,255,255,0.14) inset, 0 14px 30px -8px rgba(47,134,232,0.75);
+}
+.btn-primary:disabled{ opacity:0.65; cursor:not-allowed; transform:none; }
+.btn-ghost{ background:transparent; color:var(--ink); border-color:var(--line-strong); }
+.btn-ghost:hover{ border-color:var(--blue-bright); }
+.btn-sm{ padding:0.65rem 1.3rem; font-size:0.9rem; }
+.btn-block{ width:100%; }
+
+/* ============================= */
+/* Logo (shared)                 */
+/* ============================= */
+.logo{ display:inline-flex; align-items:center; gap:0.65rem; }
+.logo-mark{ width:34px; height:34px; flex-shrink:0; }
+.logo-word{
+  font-family:var(--font-body);
+  font-weight:800;
+  font-size:1.28rem;
+  letter-spacing:0.01em;
+  color:var(--blue-bright);
+  display:inline-flex;
+  align-items:baseline;
+  gap:0.12em;
+}
+.logo-word em{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-weight:500;
+  color:var(--ink);
+  letter-spacing:0;
+}
+
+/* ============================= */
+/* Navigation                    */
+/* ============================= */
+.site-header{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  padding:1.35rem 0;
+  transition:background 0.3s ease, border-color 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
+  border-bottom:1px solid transparent;
+}
+.site-header.is-scrolled{
+  background:rgba(6,10,15,0.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+  padding:1rem 0;
+}
+.nav-row{ display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.nav-links{ display:flex; align-items:center; gap:2.1rem; }
+.nav-links a:not(.btn){ font-size:0.96rem; font-weight:600; color:var(--ink-soft); transition:color 0.18s ease; }
+.nav-links a:not(.btn):hover{ color:var(--ink); }
+.nav-links a[aria-current="page"]{ color:var(--ink); }
+.nav-cta{ display:flex; align-items:center; gap:1.6rem; }
+
+.nav-toggle{
+  display:none;
+  width:40px; height:40px;
+  border-radius:8px;
+  border:1px solid var(--line-strong);
+  background:transparent;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+.nav-toggle span, .nav-toggle::before, .nav-toggle::after{
+  content:'';
+  display:block;
+  width:18px; height:2px;
+  background:var(--ink);
+  position:relative;
+  transition:transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle::before{ transform:translateY(-6px); }
+.nav-toggle::after{ transform:translateY(4px); }
+.nav-toggle.is-open span{ opacity:0; }
+.nav-toggle.is-open::before{ transform:translateY(1px) rotate(45deg); }
+.nav-toggle.is-open::after{ transform:translateY(-1px) rotate(-45deg); }
+
+.mobile-panel{
+  display:none;
+  flex-direction:column;
+  gap:1.1rem;
+  padding:1.5rem 2rem 2rem;
+  background:rgba(6,10,15,0.97);
+  border-bottom:1px solid var(--line);
+}
+.mobile-panel.is-open{ display:flex; }
+.mobile-panel a:not(.btn){ font-size:1.05rem; font-weight:600; color:var(--ink-soft); }
+
+@media (max-width:860px){
+  .nav-links{ display:none; }
+  .nav-cta .btn{ display:none; }
+  .nav-toggle{ display:flex; }
+}
+
+/* ============================= */
+/* Page Hero                     */
+/* ============================= */
+.page-hero{
+  padding:10.5rem 0 3.5rem;
+  background:
+    radial-gradient(ellipse 55% 55% at 100% 0%, rgba(17,101,195,0.22), transparent 60%),
+    var(--void);
+}
+.page-hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.3rem, 1.7rem + 2.4vw, 3.3rem);
+  line-height:1.1;
+  letter-spacing:-0.01em;
+  max-width:16ch;
+}
+.page-hero p{
+  margin-top:1.2rem;
+  font-size:1.05rem;
+  line-height:1.7;
+  color:var(--ink-soft);
+  max-width:54ch;
+}
+
+/* ============================= */
+/* Pricing                       */
+/* ============================= */
+.pricing-section{ padding:1rem 0 6rem; background:var(--void); }
+.pricing-panel{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--surface);
+}
+.price-col{ padding:3rem; }
+.price-col + .price-col{ border-left:1px solid var(--line); }
+.price-format{ font-size:0.98rem; font-weight:700; color:var(--ink); }
+.price-format-note{ margin-top:0.35rem; font-size:0.88rem; color:var(--ink-muted); }
+.price-main{ display:flex; align-items:baseline; gap:0.45rem; margin-top:1.6rem; }
+.price-amount{ font-family:var(--font-display); font-size:3.2rem; color:var(--ink); line-height:1; }
+.price-unit{ font-size:0.9rem; color:var(--ink-muted); }
+.price-divider{ margin:1.8rem 0; border-top:1px solid var(--line); }
+.price-sibling{ display:flex; justify-content:space-between; align-items:baseline; gap:1rem; }
+.price-sibling-label{ font-size:0.92rem; color:var(--ink-soft); max-width:16ch; }
+.price-sibling-amount{ font-family:var(--font-display); font-size:1.5rem; color:var(--blue-bright); white-space:nowrap; }
+
+.pricing-note{ margin-top:1.4rem; font-size:0.88rem; color:var(--ink-muted); }
+
+@media (max-width:700px){
+  .pricing-panel{ grid-template-columns:1fr; }
+  .price-col + .price-col{ border-left:none; border-top:1px solid var(--line); }
+}
+
+/* ============================= */
+/* Booking Form                  */
+/* ============================= */
+.form-section{ padding:0 0 8rem; background:var(--void); }
+.form-panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:3.5rem;
+}
+.form-panel h2{
+  font-family:var(--font-display);
+  font-size:1.75rem;
+  color:var(--ink);
+}
+.form-panel .form-lede{
+  margin-top:0.6rem;
+  color:var(--ink-muted);
+  font-size:0.98rem;
+  max-width:56ch;
+}
+
+.form-grid{
+  margin-top:2.4rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem 1.75rem;
+}
+.field{ display:flex; flex-direction:column; gap:0.55rem; }
+.field.full{ grid-column:1 / -1; }
+.field label{ font-size:0.86rem; font-weight:700; color:var(--ink); }
+.field .hint{ font-size:0.8rem; color:var(--ink-muted); font-weight:400; }
+
+input[type="text"], input[type="email"], input[type="tel"], textarea{
+  background:var(--surface-2);
+  border:1px solid var(--line-strong);
+  border-radius:10px;
+  padding:0.85rem 1rem;
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:0.98rem;
+  transition:border-color 0.18s ease, background 0.18s ease;
+  width:100%;
+}
+input::placeholder, textarea::placeholder{ color:var(--ink-muted); }
+input:focus, textarea:focus{ outline:none; border-color:var(--blue-bright); background:var(--surface); }
+textarea{ resize:vertical; min-height:100px; font-family:inherit; }
+
+.radio-group{ display:flex; gap:0.85rem; flex-wrap:wrap; }
+.radio-option{
+  display:flex; align-items:center; gap:0.55rem;
+  padding:0.75rem 1.1rem;
+  border:1px solid var(--line-strong);
+  border-radius:10px;
+  cursor:pointer;
+  font-size:0.92rem;
+  color:var(--ink-soft);
+  transition:border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+}
+.radio-option input{ accent-color:var(--blue-bright); }
+.radio-option.is-checked{ border-color:var(--blue-bright); color:var(--ink); background:var(--blue-soft); }
+
+.form-submit{ margin-top:2.6rem; }
+.form-note{ margin-top:1rem; font-size:0.86rem; color:var(--ink-muted); text-align:center; }
+.form-status{ margin-top:1.1rem; font-size:0.95rem; min-height:1.3em; text-align:center; }
+.form-status.is-success{ color:#7CD9A0; }
+.form-status.is-error{ color:#F08C7A; }
+
+/* honeypot field, hidden from real users */
+.hp-field{ position:absolute; left:-9999px; top:-9999px; }
+
+@media (max-width:700px){
+  .form-panel{ padding:2.2rem; }
+  .form-grid{ grid-template-columns:1fr; }
+}
+
+/* ============================= */
+/* Footer                        */
+/* ============================= */
+.site-footer{ background:var(--deep); padding-top:5.5rem; border-top:1px solid var(--line); }
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1.2fr;
+  gap:3rem;
+  padding-bottom:3.5rem;
+}
+.footer-brand p{ margin-top:1.1rem; font-size:0.95rem; color:var(--ink-muted); max-width:30ch; line-height:1.6; }
+.footer-col h4{ font-family:var(--font-body); font-size:0.85rem; font-weight:700; color:var(--ink); margin-bottom:1.1rem; }
+.footer-col ul li{ margin-bottom:0.75rem; }
+.footer-col a{ font-size:0.94rem; color:var(--ink-muted); transition:color 0.18s ease; }
+.footer-col a:hover{ color:var(--ink-soft); }
+.footer-impact{ font-family:var(--font-display); font-style:italic; font-size:1rem; line-height:1.65; color:var(--ink-soft); max-width:26ch; }
+.social-row{ display:flex; gap:0.75rem; margin-top:1.4rem; }
+.social-icon{
+  width:38px; height:38px; border-radius:9px;
+  border:1px solid var(--line-strong);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink-muted);
+  transition:border-color 0.18s ease, color 0.18s ease;
+}
+.social-icon:hover{ border-color:var(--blue-bright); color:var(--ink); }
+.social-icon svg{ width:17px; height:17px; }
+
+.footer-bottom{
+  border-top:1px solid var(--line);
+  padding:1.6rem 0 2.2rem;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:1rem; flex-wrap:wrap;
+  font-size:0.85rem; color:var(--ink-muted);
+}
+
+@media (max-width:900px){
+  .site-footer{ padding-top:3.5rem; }
+  .footer-grid{ grid-template-columns:1fr 1fr; gap:2.5rem; padding-bottom:2.5rem; }
+}
+@media (max-width:560px){
+  .footer-grid{ grid-template-columns:1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="container nav-row">
+    <a href="index.html" class="logo" aria-label="ASKaway Tutoring home">
+      <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon points="10,40 46,48 46,84 10,76" fill="#1165C3"/>
+        <polygon points="90,40 54,48 54,84 90,76" fill="#2F86E8"/>
+        <rect x="24" y="55" width="4" height="16" fill="#F4F7FB"/>
+        <rect x="18" y="61" width="16" height="4" fill="#F4F7FB"/>
+        <rect x="66" y="61" width="16" height="4" fill="#F4F7FB"/>
+        <circle cx="74" cy="55" r="2.6" fill="#F4F7FB"/>
+        <circle cx="74" cy="71" r="2.6" fill="#F4F7FB"/>
+        <polygon points="34,25 34,35 50,43 66,35 66,25 50,32" fill="#2D3541"/>
+        <polygon points="50,8 92,27 50,46 8,27" fill="#2D3541" stroke="#2F86E8" stroke-width="0.8"/>
+        <path d="M92,27 L94,50" stroke="#2F86E8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="94" cy="52" r="3.2" fill="#2F86E8"/>
+      </svg>
+      <span class="logo-word">ASK<em>away</em></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#about">About</a>
+      <a href="index.html#why">Why ASKaway</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="book.html" class="btn btn-primary btn-sm" aria-current="page">Book a Session</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="index.html#about">About</a>
+    <a href="index.html#why">Why ASKaway</a>
+    <a href="book.html" class="btn btn-primary btn-block" aria-current="page">Book a Session</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Book a session</h1>
+      <p>Pick a format below, then send a booking request. We'll follow up by email within 24–48 hours to confirm your session and share simple payment details.</p>
+    </div>
+  </section>
+
+  <section class="pricing-section">
+    <div class="container">
+      <div class="pricing-panel">
+        <div class="price-col">
+          <div class="price-format">Online</div>
+          <div class="price-format-note">Live, one-on-one video session</div>
+          <div class="price-main">
+            <span class="price-amount">$20</span>
+            <span class="price-unit">/ 45-min session</span>
+          </div>
+          <div class="price-divider"></div>
+          <div class="price-sibling">
+            <span class="price-sibling-label">Siblings together</span>
+            <span class="price-sibling-amount">$38</span>
+          </div>
+        </div>
+        <div class="price-col">
+          <div class="price-format">In Person</div>
+          <div class="price-format-note">Face-to-face, one-on-one session</div>
+          <div class="price-main">
+            <span class="price-amount">$25</span>
+            <span class="price-unit">/ 45-min session</span>
+          </div>
+          <div class="price-divider"></div>
+          <div class="price-sibling">
+            <span class="price-sibling-label">Siblings together</span>
+            <span class="price-sibling-amount">$45</span>
+          </div>
+        </div>
+      </div>
+      <p class="pricing-note">Sibling pricing applies when both students attend the same 45-minute session together.</p>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="container">
+      <div class="form-panel">
+        <h2>Send a booking request</h2>
+        <p class="form-lede">Fill this out and we'll reach out to confirm a time. No account or online payment needed.</p>
+
+        <!--
+          SETUP REQUIRED: this form sends to Formspree, a free service that emails
+          submissions straight to your inbox. Before this form will work:
+          1. Create a free account at formspree.io
+          2. Create a new form there and copy the form ID it gives you
+          3. Replace YOUR_FORM_ID directly below with that ID
+        -->
+        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_subject" value="New ASKaway Booking Request">
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="parentName">Parent / Guardian Name</label>
+              <input type="text" id="parentName" name="Parent/Guardian Name" placeholder="Full name" required>
+            </div>
+            <div class="field">
+              <label for="parentEmail">Email</label>
+              <input type="email" id="parentEmail" name="Email" placeholder="you@email.com" required>
+            </div>
+            <div class="field">
+              <label for="parentPhone">Phone <span class="hint">(optional)</span></label>
+              <input type="tel" id="parentPhone" name="Phone" placeholder="(805) 555-0100">
+            </div>
+            <div class="field">
+              <label for="studentName">Student Name(s)</label>
+              <input type="text" id="studentName" name="Student Name(s)" placeholder="e.g., Maya, or Maya &amp; Leo" required>
+            </div>
+            <div class="field full">
+              <label for="gradeLevel">Grade Level(s)</label>
+              <input type="text" id="gradeLevel" name="Grade Level(s)" placeholder="e.g., 4th grade, or 2nd &amp; 5th for siblings" required>
+            </div>
+
+            <div class="field full">
+              <label>Format</label>
+              <div class="radio-group" id="formatGroup">
+                <label class="radio-option is-checked">
+                  <input type="radio" name="Format" value="Online" checked> Online
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="Format" value="In-Person"> In person
+                </label>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label>Session Type</label>
+              <div class="radio-group" id="typeGroup">
+                <label class="radio-option is-checked">
+                  <input type="radio" name="Session Type" value="Single Student" checked> Single student
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="Session Type" value="Siblings Together"> Siblings together
+                </label>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label for="preferredTimes">Preferred Days &amp; Times</label>
+              <input type="text" id="preferredTimes" name="Preferred Days & Times" placeholder="e.g., weekday afternoons, Tuesday evenings">
+            </div>
+
+            <div class="field full">
+              <label for="notes">Additional Notes <span class="hint">(optional)</span></label>
+              <textarea id="notes" name="Additional Notes" placeholder="Anything else that would help us prepare for the first session"></textarea>
+            </div>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary btn-block" id="submitBtn">Send Booking Request</button>
+            <p class="form-note">Payment is arranged directly with ASKaway after booking — no online payment required.</p>
+            <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" aria-label="ASKaway Tutoring home">
+          <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="10,40 46,48 46,84 10,76" fill="#1165C3"/>
+            <polygon points="90,40 54,48 54,84 90,76" fill="#2F86E8"/>
+            <rect x="24" y="55" width="4" height="16" fill="#F4F7FB"/>
+            <rect x="18" y="61" width="16" height="4" fill="#F4F7FB"/>
+            <rect x="66" y="61" width="16" height="4" fill="#F4F7FB"/>
+            <circle cx="74" cy="55" r="2.6" fill="#F4F7FB"/>
+            <circle cx="74" cy="71" r="2.6" fill="#F4F7FB"/>
+            <polygon points="34,25 34,35 50,43 66,35 66,25 50,32" fill="#2D3541"/>
+            <polygon points="50,8 92,27 50,46 8,27" fill="#2D3541" stroke="#2F86E8" stroke-width="0.8"/>
+            <path d="M92,27 L94,50" stroke="#2F86E8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <circle cx="94" cy="52" r="3.2" fill="#2F86E8"/>
+          </svg>
+          <span class="logo-word">ASK<em>away</em></span>
+        </a>
+        <p>Affordable, one-on-one math tutoring for grades K–8 — online and in person.</p>
+        <div class="social-row">
+          <!-- Add your Instagram link here once your account is live: change href="#" to your profile URL -->
+          <a href="#" class="social-icon" aria-label="ASKaway on Instagram" title="Instagram — coming soon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#why">Why ASKaway</a></li>
+          <li><a href="book.html">Book a Session</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:askawayteaching@gmail.com">askawayteaching@gmail.com</a></li>
+          <li><a href="tel:+18057421583">(805) 742-1583</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Impact</h4>
+        <p class="footer-impact">Every session helps fund UNICEF's work for children in over 190 countries.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ASKaway Tutoring. All rights reserved.</span>
+      <span>Math support for grades K–8 · Online &amp; in-person sessions</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky header background on scroll
+  var header = document.getElementById('siteHeader');
+  function onScroll(){
+    if(window.scrollY > 12){ header.classList.add('is-scrolled'); }
+    else{ header.classList.remove('is-scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // Mobile nav toggle
+  var navToggle = document.getElementById('navToggle');
+  var mobilePanel = document.getElementById('mobilePanel');
+  navToggle.addEventListener('click', function(){
+    var isOpen = mobilePanel.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', isOpen);
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  mobilePanel.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      mobilePanel.classList.remove('is-open');
+      navToggle.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Radio pill highlight state
+  function wireRadioGroup(groupId){
+    var group = document.getElementById(groupId);
+    if(!group) return;
+    var options = group.querySelectorAll('.radio-option');
+    options.forEach(function(opt){
+      var input = opt.querySelector('input');
+      input.addEventListener('change', function(){
+        options.forEach(function(o){ o.classList.remove('is-checked'); });
+        opt.classList.add('is-checked');
+      });
+    });
+  }
+  wireRadioGroup('formatGroup');
+  wireRadioGroup('typeGroup');
+
+  // Booking form submission via Formspree (AJAX, no page reload)
+  var form = document.getElementById('bookingForm');
+  var statusBox = document.getElementById('formStatus');
+  var submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    statusBox.className = 'form-status';
+    statusBox.textContent = '';
+
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response){
+      if(response.ok){
+        form.reset();
+        document.querySelectorAll('.radio-option').forEach(function(el, i){
+          el.classList.toggle('is-checked', i % 2 === 0);
+        });
+        statusBox.textContent = "Request sent! We'll email you within 24–48 hours to confirm your session and next steps.";
+        statusBox.className = 'form-status is-success';
+      } else {
+        throw new Error('Submission failed');
+      }
+    }).catch(function(){
+      statusBox.textContent = 'Something went wrong. Please email us directly at askawayteaching@gmail.com or call (805) 742-1583.';
+      statusBox.className = 'form-status is-error';
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Booking Request';
+    });
+  });
+</script>
+
+</body>
+</html>
