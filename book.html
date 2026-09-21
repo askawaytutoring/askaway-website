@@ -453,6 +453,7 @@ textarea{ resize:vertical; min-height:100px; font-family:inherit; }
         </div>
       </div>
       <p class="pricing-note">Sibling pricing applies when both students attend the same 45-minute session together.</p>
+      <p class="pricing-note">Already an ASKaway family? Every new student you refer earns you $2 off your own sessions, up to 3 referrals ($6 off per session). Just have them list your name when they book.</p>
     </div>
   </section>
 
@@ -469,7 +470,7 @@ textarea{ resize:vertical; min-height:100px; font-family:inherit; }
           2. Create a new form there and copy the form ID it gives you
           3. Replace YOUR_FORM_ID directly below with that ID
         -->
-        <form id="bookingForm" action="https://formspree.io/f/mrpbqqle" method="POST">
+        <form id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off">
           <input type="hidden" name="_subject" value="New ASKaway Booking Request">
 
@@ -522,6 +523,11 @@ textarea{ resize:vertical; min-height:100px; font-family:inherit; }
             <div class="field full">
               <label for="preferredTimes">Preferred Days &amp; Times</label>
               <input type="text" id="preferredTimes" name="Preferred Days & Times" placeholder="e.g., weekday afternoons, Tuesday evenings">
+            </div>
+
+            <div class="field full">
+              <label for="referredBy">Referred By <span class="hint">(optional)</span></label>
+              <input type="text" id="referredBy" name="Referred By" placeholder="Name of the current ASKaway student or parent who referred you, if any">
             </div>
 
             <div class="field full">
@@ -595,7 +601,7 @@ textarea{ resize:vertical; min-height:100px; font-family:inherit; }
 
       <div class="footer-col">
         <h4>Our Impact</h4>
-        <p class="footer-impact">Every session helps fund UNICEF's work for children in over 190 countries.</p>
+        <p class="footer-impact">ASKaway donates a portion of every session fee to UNICEF's work for children in over 190 countries.</p>
       </div>
     </div>
 
